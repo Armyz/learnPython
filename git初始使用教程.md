@@ -16,8 +16,8 @@ ssh-keygen -C “your_email@example.com” -f ~/.ssh/github
 ```shell
 git -T git@github.com
 ```
-		输出Hi userNmae! You've successfully authenticated,
-		 but GitHub does not provide shell access.
+输出Hi userNmae! You've successfully authenticated,
+but GitHub does not provide shell access.
 
 ##3.保存github账号信息
 ```shell
@@ -38,8 +38,8 @@ git push -u origin master
 ##6.上传已经存在的仓库至github
  	切换到已存在仓库的目录下
 ```shell
-	git remote add origin https://github.com/userName/test.git
-	git push -u origin master
+git remote add origin https://github.com/userName/test.git
+git push -u origin master
 ```
 
 ##7.登录不需要密码
