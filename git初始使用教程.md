@@ -28,8 +28,14 @@
  	a.切换到已存在仓库的目录下
 	b.git remote add origin https://github.com/userName/test.git
 	c.git push -u origin master
+	注明：若出现！[rejected] master-master->(fetch first)这是由于远端仓库的文件
+	部分不在本地目录。
+	解决办法的：输入git pull -rebase origin master
 
 8.每次更新长传至仓库都需要输入用户名和密码，不用输入密码的步骤如下：
 	a.终端执行：git config --global credential.helper store
 	b.上述命令会在.gitconfig文件中添加credential字段，下次上传输入密码后将会被记住，
 		以后不用再输入密码
+
+
+
