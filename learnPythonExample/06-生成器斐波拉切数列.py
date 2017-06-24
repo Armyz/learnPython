@@ -31,4 +31,4 @@ if __name__ == "__main__":
 
     print("开始执行生成器对象")
     for x in a:
-        pass
+        print(x)
