@@ -4,6 +4,7 @@ class Person(object):
 
 p1 = Person()
 
+#可正常添加
 p1.name = "py"
 print(p1.name)
 
