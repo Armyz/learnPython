@@ -18,8 +18,7 @@ def yeildFib(times):
     a,b = 0,1
     while times > 0:
         times -= 1
-        yield(b)
-        print(b)
+        yield b
         a,b = b,a+b
     print("Done")
 
@@ -27,8 +26,7 @@ if __name__ == "__main__":
 
     Fib(10)
 
-    a = yeildFib(5)
-
     print("开始执行生成器对象")
-    for x in a:
+    for x in yeildFib(5):
         print(x)
+    
