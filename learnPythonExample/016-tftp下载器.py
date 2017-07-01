@@ -1,4 +1,5 @@
 # -*- coding:utf-8 -*-
+#用于python3
 
 from socket import *
 import sys
@@ -8,7 +9,7 @@ import time
 def main():
     if len(sys.argv) < 3:
         print("*"*30)
-        print("Tips:python3 xxx.py ipaddress filename")
+        print("Tips:python3 %s ipaddress filename"%sys.argv[0])
         print("*"*30)
         exit()
     else:
@@ -22,7 +23,8 @@ def main():
     #计算pack时的format
     packFormat = "!H" + str(len(downFileName)) + "sb5sb"
     #根据tftp协议进行数据封装,请求数据包
-    requsetData = struct.pack(packFormat, 1, downFileName, 0, "octet", 0)
+    requsetData = struct.pack(packFormat, 1, downFileName.encode("utf-8"),
+                              0, "octet".encode("utf-8"), 0)
     #发送数据
     udpSocket.sendto(requsetData,sendAddr)
 
@@ -36,13 +38,6 @@ def main():
         recvContent,recvAddr = recvData
         #解析返回的操作码
         operateNum = struct.unpack("!HH",recvContent[:4])
-        print(operateNum)
-        #print(recvContent[4:])
-
-        #文件不存在
-        if(recvContent[4:] == "File not found"):
-            print("%s文件不在"%downFileName)
-            break
 
         #收到数据包
         if(operateNum[0] == 3):
@@ -53,7 +48,7 @@ def main():
                 #写文件
                 newfile.write(recvContent[4:])
                 blockNum += 1
-                print(blockNum)
+                print("%d"%blockNum, end="", flush = True)
                 if(blockNum == 65535):
                     blockNum = 0
 
@@ -69,7 +64,9 @@ def main():
 
         #出现错误
         if operateNum[0] == 5:
-            print("download error!")
+            packFormat = "!%ds"%(len(recvContent) - 4)
+            errmsg = struct.unpack(packFormat,recvContent[4:])
+            print("错误信息:%s"%errmsg)
             break
 
     udpSocket.close()
