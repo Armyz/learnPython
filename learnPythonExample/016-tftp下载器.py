@@ -56,7 +56,7 @@ def main():
                 print(blockNum)
                 if(blockNum == 65535):
                     blockNum = 0
-    
+
             if(len(recvContent) < 516):
                 newfile.close()
                 print("下载完毕")
