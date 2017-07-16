@@ -1,6 +1,7 @@
 # -*- coding:utf-8 -*-
 
 from multiprocessing import *
+from threading import Thread
 from socket import *
 import sys
 
@@ -36,9 +37,14 @@ if __name__ == "__main__":
             newSocket, destAddr = serverSocket.accept();
             #将接受到的新的客户端放入进程中
             client = Process(target = serverWorker, args = (newSocket, destAddr))
+            #多线程
+            #client = Thread(target = serverWorker, args = (newSocket, destAddr))
+
             client.start()
             #已经讲新的套接字复制了一份到新的子进程中
             newSocket.close()
+            #若是多线程，则不能关闭，子线程需要用到父进程的资源
+            #newSocket.close()
 
     finally:
         #关闭服务器套接字
