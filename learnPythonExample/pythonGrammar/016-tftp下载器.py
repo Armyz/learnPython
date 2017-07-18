@@ -1,0 +1,75 @@
+# -*- coding:utf-8 -*-
+#用于python3
+
+from socket import *
+import sys
+import struct
+import time
+
+def main():
+    if len(sys.argv) < 3:
+        print("*"*30)
+        print("Tips:python3 %s ipaddress filename"%sys.argv[0])
+        print("*"*30)
+        exit()
+    else:
+        serverIp = sys.argv[1]
+        downFileName = sys.argv[2]
+
+    #创建套接字
+    udpSocket = socket(AF_INET, SOCK_DGRAM)
+    #tftp服务器的IP地址，以及端口号
+    sendAddr = (serverIp, 69)
+    #计算pack时的format
+    packFormat = "!H" + str(len(downFileName)) + "sb5sb"
+    #根据tftp协议进行数据封装,请求数据包
+    requsetData = struct.pack(packFormat, 1, downFileName.encode("utf-8"),
+                              0, "octet".encode("utf-8"), 0)
+    #发送数据
+    udpSocket.sendto(requsetData,sendAddr)
+
+    newfile = 0
+    blockNum = 0
+
+    while True:
+        #接受数据包，元组方式存储
+        recvData = udpSocket.recvfrom(1024)
+        #将接受到的数据包分别放入接受数据缓冲区和地址缓冲区
+        recvContent,recvAddr = recvData
+        #解析返回的操作码
+        operateNum = struct.unpack("!HH",recvContent[:4])
+
+        #收到数据包
+        if(operateNum[0] == 3):
+            if(operateNum[1] == 1 and newfile == 0):
+                newfile = open(downFileName,"wb")
+
+            if(blockNum+1 == operateNum[1]):
+                #写文件
+                newfile.write(recvContent[4:])
+                blockNum += 1
+                print("%d"%blockNum, end="", flush = True)
+                if(blockNum == 65535):
+                    blockNum = 0
+
+            if(len(recvContent) < 516):
+                newfile.close()
+                print("下载完毕")
+                break
+
+            #发送应答至服务器
+            requsetData = struct.pack("!HH",4,operateNum[1])
+            #此处的地址必须为服务器返回的IP和端口号
+            udpSocket.sendto(requsetData,recvAddr)
+
+        #出现错误
+        if operateNum[0] == 5:
+            packFormat = "!%ds"%(len(recvContent) - 4)
+            errmsg = struct.unpack(packFormat,recvContent[4:])
+            print("错误信息:%s"%errmsg)
+            break
+
+    udpSocket.close()
+
+if __name__ == "__main__":
+    main()
