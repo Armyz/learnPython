@@ -3,6 +3,7 @@
 from multiprocessing import *
 from socket import *
 
+# html 根目录
 HTML_ROOT_DIR = "./html"
 
 
