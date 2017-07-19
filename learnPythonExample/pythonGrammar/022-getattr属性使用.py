@@ -6,7 +6,7 @@ class Foo(object):
         pass
 
     def __getattr__(self, item):
-        print(item, "")
+        print(item, end=" ")
         return self
 
     # 打印时FOO对象时，默认的输出修改，若没有重写。则默认打印对象的地址
