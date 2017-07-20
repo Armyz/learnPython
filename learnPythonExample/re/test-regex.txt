@@ -1,0 +1,35 @@
+
+        岗位职责：
+完成推荐算法、数据统计、接口、后台等服务器端相关工作
+
+必备要求：
+良好的自我驱动力和职业素养，工作积极主动、结果导向
+
+技术要求：
+1、一年以上 Python 开发经验，掌握面向对象分析和设计，了解设计模式
+2、掌握HTTP协议，熟悉MVC、MVVM等概念以及相关WEB开发框架
+3、掌握关系数据库开发设计，掌握 SQL，熟练使用 MySQL/PostgreSQL 中的一种
+4、掌握NoSQL、MQ，熟练使用对应技术解决方案
+5、熟悉 Javascript/CSS/HTML5，JQuery、React、Vue.js
+
+加分项：
+大数据，数理统计，机器学习，sklearn，高性能，大并发。
+
+<img data-original="https://rpic.douyucdn.cn/appCovers/2016/11/13/1213973_201611131917_small.jpg" src="https://rpic.douyucdn.cn/appCovers/2016/11/13/1213973_201611131917_small.jpg" style="display: inline;">
+
+http://www.interoem.com/messageinfo.asp?id=35
+http://3995503.com/class/class09/news_show.asp?id=14
+http://lib.wzmc.edu.cn/news/onews.asp?id=769
+http://www.zy-ls.com/alfx.asp?newsid=377&id=6
+http://www.fincm.com/newslist.asp?id=415
+
+
+
+图片网址搜索：https://rpic.douyucdn.cn/appCovers/2016/11/13/1213973_201611131917_small.jpg
+
+网址匹配：
+http://www.interoem.com/
+http://3995503.com/
+http://lib.wzmc.edu.cn/
+http://www.zy-ls.com/
+http://www.fincm.com/
