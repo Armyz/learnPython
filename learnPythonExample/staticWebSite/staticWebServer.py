@@ -2,6 +2,7 @@
 
 from multiprocessing import *
 from socket import *
+import  re
 
 # html 根目录
 HTML_ROOT_DIR = "./html"
@@ -14,21 +15,37 @@ def client_process_handler(new_socket, request_address):
         request_data = new_socket.recv(1024)
         print("request Data:%s" % request_data)
 
-        """ 将接受到的数据根据换行符进行分割放入列表 """
+        # 将接受到的数据根据换行符进行分割放入列表
         request_head_lines = request_data.splitlines()
-        """ 响应第一行头 "GET / HTTP/1.1" """
+        # 请求第一行头 "GET / HTTP/1.1" bytes类型
         request_first_line = request_head_lines[0]
+        # 获取请求文件名
+        file_name = re.match(r"\w+\s+(/[^ ]*)", request_first_line.decode("utf-8")).group(1)
+        if "/" == file_name:
+            file_name += "index.html"
 
-        response_head_lines = "HTTP/1.1 200 OK\r\n"
-        response_head_lines += "\r\n"
-        response_body = "This is static web Test!"
+        # 打开文件读取内容
+        try:
+            file = open(HTML_ROOT_DIR + file_name, "rb")
+        except IOError:
+            response_head_lines = "HTTP/1.1 404 Not Found\r\n"
+            response_head_lines += "\r\n"
+            response_body = "The file is not found!"
+        else:
+            file_data = file.read()
+            file.close()
+
+            # 构造响应数据
+            response_head_lines = "HTTP/1.1 200 OK\r\n"
+            response_head_lines += "\r\n"
+            response_body = file_data.decode("utf-8")
 
         response = response_head_lines + response_body
 
         new_socket.send(bytes(response, "utf-8"))
         new_socket.close()
     except Exception as ex:
-        print("差异产生:%s" % ex)
+        print("产生异常:%s" % ex)
     finally:
         new_socket.close()
 
