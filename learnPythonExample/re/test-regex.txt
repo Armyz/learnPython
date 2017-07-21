@@ -1,3 +1,33 @@
+itcast hello python
+itcast c++
+itheima ios
+itheima php
+
+13811011234
+1a3hi233rhi3
+87156340
+029-62359615
+
+GET /index.html HTTP/1.1
+
+156412sad@163.com
+56412sad@qq.com
+156412sad@qqd.com
+15?412sad@qq.com
+f15?6412sad@163.com
+156412sad@163.com12312
+_asdfas56412sad@163.com
+
+
+3124
+a3124
+312412
+浣犲ソ
+buzhiyi
+sjdisof
+
+www.baidu.cn
+
 
         岗位职责：
 完成推荐算法、数据统计、接口、后台等服务器端相关工作
