@@ -88,9 +88,9 @@ class HTTPServer(object):
 
 # 定义主函数入口
 def main():
-    server = HTTPServer()
-    server.bind(("", 8000))
-    server.start()
+    http_server = HTTPServer()
+    http_server.bind(("", 8000))
+    http_server.start()
 
 if __name__ == "__main__":
     main()
