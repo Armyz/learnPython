@@ -43,7 +43,8 @@ git push -u origin master
 ```
 
 ## 7.登录不需要密码
-每次更新长传至仓库都需要输入用户名和密码，不用输入密码的步骤如下：
+每次更新长传至仓库都需要输入用户名和密码，不用输入密码的步骤如下:
+
 a.终端执行：
 ```shell
 git config --global credential.helper store
