@@ -1,19 +1,20 @@
-# - git初始使用教程 
+# 一.git初始使用教程 
 ## 1.安装git
-```shell
+```
 sudo apt-get install git-core
 ```
 ## 2.进行ssh认证
-	a.终端执行：
-```shell
+**a.终端执行:**
+```
 ssh-keygen -C “your_email@example.com” -f ~/.ssh/github
 ```
 	将会在～/.shh文件夹中生成两个文件github和github.pub，共钥和私钥。
-	b.复制～/.ssh/github.pub中的内容，复制到自己的github账户上的
+**b.复制～/.ssh/github.pub中的内容，复制到自己的github账户上的
 	Settings –> SSH and GPG keys –> New SSH key，填上适当的 Title，
-	并复制github.pub 文件的内容粘贴在 Key 文本框里。
-	c.在终端执行：
-```shell
+	并复制github.pub 文件的内容粘贴在 Key 文本框里。**
+
+**c.在终端执行:**
+```
 git -T git@github.com
 ```
 输出Hi userNmae! You've successfully authenticated,
