@@ -1,4 +1,4 @@
-# 1.git初始使用教程 
+# -git初始使用教程 
 ## 1.安装git
 ```shell
 sudo apt-get install git-core
