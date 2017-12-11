@@ -48,4 +48,4 @@ a.终端执行：
 ```shell
 git config --global credential.helper store
 ```
-b.上述命令会在.gitconfig文件中添加credential字段，下次上传输入密码后将会被记住，以后不用再输入密码
+b.上述命令会在.gitconfig文件中添加credential字段，下次上传输入密码后将会被记住，以后不用再输入密码。
