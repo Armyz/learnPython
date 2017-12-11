@@ -26,8 +26,8 @@ class HTTPServer(object):
                 client_socket, client_address = self.server_socket.accept()
 
                 # 开启新的进程处理客户端连接
-                client_process = Process(target = self.client_process_handler, 
-                        args = (client_socket, client_address))
+                client_process = Process(target=self.client_process_handler,
+                                         args=(client_socket, client_address))
 
                 client_process.start()
                 client_socket.close()
@@ -53,9 +53,9 @@ class HTTPServer(object):
             # 请求第一行头 "GET / HTTP/1.1" bytes类型
             request_first_line = request_head_lines[0]
 
-            #获取请求文件名
+            # 获取请求文件名
             file_name = re.match(r"\w+\s+(/[^ ]*)",
-                    request_first_line.decode("utf-8")).group(1)
+                                 request_first_line.decode("utf-8")).group(1)
 
             if "/" == file_name:
                 file_name += "index.html"
@@ -86,11 +86,13 @@ class HTTPServer(object):
         finally:
             new_socket.close()
 
-# 定义主函数入口
+
 def main():
+    # 定义主函数入口
     http_server = HTTPServer()
     http_server.bind(("", 8000))
     http_server.start()
+
 
 if __name__ == "__main__":
     main()
