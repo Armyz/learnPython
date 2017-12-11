@@ -1,12 +1,9 @@
 # 1.git初始使用教程 
-
 ## 1.安装git
 ```shell
 sudo apt-get install git-core
 ```
-
-##2.进行ssh认证
-
+## 2.进行ssh认证
 	a.终端执行：
 ```shell
 ssh-keygen -C “your_email@example.com” -f ~/.ssh/github
@@ -21,19 +18,15 @@ git -T git@github.com
 ```
 输出Hi userNmae! You've successfully authenticated,
 but GitHub does not provide shell access.
-
-##3.保存github账号信息
-
+## 3.保存github账号信息
 ```shell
 git config --global user.name <userName>
 git config --global user.email <your@email.com>
 ```
-##4.在github账户上新建一个仓库
+## 4.在github账户上新建一个仓库
 
 	如：https://github.com/userName/test.git
-
-##5.在本地创建新的新的仓库
-
+## 5.在本地创建新的新的仓库
 ```shell
 echo "#test" >> README.md
 git init
@@ -42,16 +35,14 @@ git commit -m "first commit"
 git remote add origin https://github.com/userName/test.git
 git push -u origin master
 ```
-##6.上传已经存在的仓库至github
-
+## 6.上传已经存在的仓库至github
  	切换到已存在仓库的目录下
 ```shell
 git remote add origin https://github.com/userName/test.git
 git push -u origin master
 ```
 
-##7.登录不需要密码
-
+## 7.登录不需要密码
 	每次更新长传至仓库都需要输入用户名和密码，不用输入密码的步骤如下：
 	a.终端执行：
 ```shell
