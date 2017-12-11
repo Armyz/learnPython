@@ -1,5 +1,6 @@
-#1.git初始使用教程 
-##1.安装git
+# 1.git初始使用教程 
+
+## 1.安装git
 ```shell
 sudo apt-get install git-core
 ```
@@ -27,6 +28,7 @@ git config --global user.email <your@email.com>
 ```
 ##4.在github账户上新建一个仓库
 	如：https://github.com/userName/test.git
+
 ##5.在本地创建新的新的仓库
 ```shell
 echo "#test" >> README.md
